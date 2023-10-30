@@ -95,7 +95,7 @@ function processBuffer(buffer: ArrayBuffer): Array<Result> {
   return results;
 }
 
-export default function Test() {
+export default function App() {
 
   const [loading, setLoading] = useState(false);
   const [items, setItems] = useState<Result[]>([]);
