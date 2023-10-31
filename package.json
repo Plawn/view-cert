@@ -4,13 +4,18 @@
   "dependencies": {
     "@emotion/react": "^11.11.1",
     "@emotion/styled": "^11.11.0",
+    "@mui/icons-material": "^5.14.15",
     "@mui/material": "^5.14.15",
+    "@mui/styles": "^5.14.15",
     "@types/node-forge": "^1.3.8",
     "asn1js": "^3.0.5",
     "node-forge": "^1.3.1",
     "pkijs": "^3.0.15",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
+    "react-dropzone": "^14.2.3",
+    "react-json-pretty": "^2.2.0",
+    "recoil": "^0.7.7",
     "web-vitals": "^3.0.3"
   },
   "eslintConfig": {
@@ -27,6 +32,8 @@
     "react-refresh": "0.10.0"
   },
   "scripts": {
+    "start": "bun dev",
+    "build": "react-scripts build",
     "dev": "bun --watch run dev.tsx"
   },
   "module": "index.ts",

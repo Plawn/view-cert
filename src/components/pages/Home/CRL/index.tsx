@@ -1,7 +1,7 @@
 import React from 'react';
 import Exporter from './exporter';
-import { CrlElement } from '../App';
-import { Typography } from '@material-ui/core';
+import { CrlElement } from '../Home';
+import { Typography } from '@mui/material';
 
 type Props = {
     crl: CrlElement

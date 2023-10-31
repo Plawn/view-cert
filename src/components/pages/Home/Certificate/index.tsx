@@ -1,11 +1,11 @@
-import { Button, Card, CardActions, CardContent, CardHeader, Collapse, Tooltip } from '@material-ui/core';
+import { Button, Card, CardActions, CardContent, CardHeader, Collapse, Tooltip } from '@mui/material';
 import React, { useMemo, useState } from 'react';
 import { pki } from 'node-forge';
 import JSONPretty from 'react-json-pretty';
 import { sortBy } from '../../../../utils/utils';
 import Extensions from './extensions';
 import Exporter from './exporter';
-import { CertificateElement } from '../App';
+import { CertificateElement } from '../Home';
 
 
 type Props = {

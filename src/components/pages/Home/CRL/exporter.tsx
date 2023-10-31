@@ -1,13 +1,13 @@
 import { Button } from '@mui/material';
-import { downloadContent } from '../../../../utils/utils';
-import { CrlElement } from '../App';
+import { CrlElement } from '../Home';
+import { contentToDisk } from '../../../../utils/downloadUtils';
 
 function getPem(crl: CrlElement) {
-    downloadContent(crl.crl.pem, "crl.pem");
+    contentToDisk(crl.crl.pem, "crl.pem");
 }
 
 function getDer(crl: CrlElement) {
-    downloadContent(crl.crl.der, "crl.crl");
+    contentToDisk(crl.crl.der, "crl.crl");
 }
 
 /**
@@ -37,15 +37,12 @@ export function formatPEM(pemString: string): string {
 
 export type PEMType = "X509 CRL" | "CERTIFICATE"
 
-// Following function is not used, to uncomment when found usage
-/*
-function makeDer(crl: pkijs.CertificateRevocationList) {
-    return crl.toSchema().toBER()
-}
-*/
+// function makeDer(crl: pkijs.CertificateRevocationList) {
+//     return crl.toSchema().toBER()
+// }
 
 
-export default function Exporter(props: { crl: CrlElement}) {
+export default function Exporter(props: { crl: CrlElement }) {
     const { crl } = props;
 
     return (

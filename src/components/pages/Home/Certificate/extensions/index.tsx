@@ -1,4 +1,4 @@
-import { Typography } from "@material-ui/core";
+import { Typography } from "@mui/material";
 import { ShowRaw } from "..";
 import { BaseExtension, ByteArray, Item } from "../common";
 import type { KeyUsage as KeyUsageType } from "./keyUsage";
