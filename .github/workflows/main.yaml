@@ -8,6 +8,7 @@ jobs:
   deploy:
     name: deploy
     runs-on: ubuntu-latest
+    
     permissions:
         pages: write      # to deploy to Pages
         id-token: write   # to verify the deployment originates from an appropriate source
@@ -17,4 +18,7 @@ jobs:
 
       # run any `bun` or `bunx` command
       - run: bun install
-      - run: bun run deploy
+      - name: deploy
+        run: bun run deploy
+        env:
+            GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
