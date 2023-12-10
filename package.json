@@ -44,7 +44,7 @@
     "start": "vite",
     "predeploy": "npm run build",
     "deploy": "gh-pages -d build",
-    "build": "react-scripts build",
+    "build": "vite build",
     "dev": "bun --watch run dev.tsx"
   },
   "module": "index.ts",
