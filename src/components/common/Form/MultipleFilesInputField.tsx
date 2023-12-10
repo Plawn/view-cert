@@ -16,14 +16,15 @@ export type MultipleFilesInputFieldProps = {
 const defaultExtensions: AvailableExtensions[] = ["json", "xlsx"];
 
 const MultipleFilesInputField = (props: MultipleFilesInputFieldProps) => {
-	const [selectedFiles, setSelectedFiles] = useState<File[] | undefined>();
+	const [selectedFiles, setSelectedFiles] = useState<File[] | null>(null);
 	const { onChange, authorizedExtensions } = props;
 	const snackbar = useSnackbar();
 
 	const onDrop = useCallback(
 		(acceptedFiles: File[]) => {
 			try {
-				onChange && onChange(acceptedFiles);
+				console.log('onchange');
+				props?.onChange(acceptedFiles);
 				setSelectedFiles(acceptedFiles);
 			} catch (e: any) {
 				snackbar('error', e.message);
@@ -61,7 +62,7 @@ const MultipleFilesInputField = (props: MultipleFilesInputFieldProps) => {
 				{/* {selectedFile && selectedFile.name} */}
 				<TextField
 					placeholder="Choose a file"
-					value={selectedFiles && selectedFiles.map(f => f.name).join(', ')}
+					value={selectedFiles?.map(f => f.name).join(', ') ?? ""}
 				/>
 			</label>
 		</div>

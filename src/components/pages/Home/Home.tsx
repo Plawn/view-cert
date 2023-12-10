@@ -1,7 +1,7 @@
 import { Card, CardContent, Typography } from '@mui/material';
 import forge, { pki, util } from 'node-forge';
 import Certificate from './Certificate';
-import React, {  useState } from 'react';
+import React, { useState } from 'react';
 import FileInputField from '../../common/Form/FileInputField';
 import LoadingComponent from '../../common/LoadingComponent/LoadingComponent';
 import * as asn1 from 'asn1js';
@@ -68,6 +68,7 @@ function getCertificate(buffer: ArrayBuffer): CertificateElement[] {
     const certificate = pki.certificateFromPem(text);
     return [{ type: "certificate", certificate, format: "pem" }];
   } catch (e) {
+    // console.log('errr', e);
     // from der here
     const a = forge.asn1.fromDer(util.createBuffer(new Uint8Array(buffer)));
     const certificate = pki.certificateFromAsn1(a);
@@ -90,6 +91,7 @@ function processBuffer(buffer: ArrayBuffer): Array<Result> {
         results.push(r);
       });
     } catch (e) {
+      // console.log('e2', e);
     }
   }
   return results;
@@ -103,8 +105,10 @@ export default function App() {
   const onFile = async (file: File) => {
     setLoading(true);
     const content = await file.arrayBuffer();
+    console.log('content', content);
     try {
       const i = processBuffer(content);
+      console.log('i', i);
       setItems(i);
     } finally {
       setLoading(false);
