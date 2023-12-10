@@ -19,6 +19,9 @@ jobs:
       # run any `bun` or `bunx` command
       - run: bun install
       - name: deploy
-        run: bun run deploy
+        run: |
+            git config --local user.email "bot-build@plawn.io"
+            git config --local user.name "github-actions[bot]"
+            bun run deploy
         env:
             GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
