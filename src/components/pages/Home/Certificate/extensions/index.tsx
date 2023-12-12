@@ -8,6 +8,7 @@ import BasicConstraints from "./basicConstraints";
 import type { BasicConstraints as BasicConstraintsType } from "./basicConstraints";
 import type { CertificatePolicies as CertificatePoliciesType } from './certificatePolicies';
 import CertificatePolicies from "./certificatePolicies";
+import Spacer from "../../../../common/Spacer/Spacer";
 
 type AuthorityKeyIdentifier = BaseExtension & {
     name: "authorityKeyIdentifier",
@@ -77,24 +78,32 @@ export default function Extensions({ extensions }: { extensions: Extension[] }) 
     return (
         <div>
             {extensions.map(e => {
+                let res: JSX.Element;
                 if (e.name === "keyUsage") {
-                    return <KeyUsage data={e} />
+                    res = <KeyUsage data={e} />
                 }
                 if (e.name === "authorityKeyIdentifier") {
-                    return <AuthorityKeyIdentifier data={e} />
+                    res = <AuthorityKeyIdentifier data={e} />
                 }
                 if (e.name === "subjectKeyIdentifier") {
-                    return <SubjectKeyIdentifier data={e} />
+                    res = <SubjectKeyIdentifier data={e} />
                 }
                 if (e.name === "basicConstraints") {
-                    return <BasicConstraints data={e} />
+                    res = <BasicConstraints data={e} />
                 }
                 if (e.name === "certificatePolicies") {
-                    return <CertificatePolicies data={e} />
+                    res = <CertificatePolicies data={e} />
                 }
                 if (e.name === "subjectAltName") {
-                    return <SubjectAltNames data={e} />
+                    res = <SubjectAltNames data={e} />
                 }
+                return (
+                    <React.Fragment key={e.id}>
+                        {/* @ts-ignore */}
+                        {res}
+                        <Spacer size="1em" direction="vertical" />
+                    </React.Fragment>
+                )
             })}
             <hr />
             <ShowRaw data={extensions} />

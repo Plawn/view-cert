@@ -1,3 +1,14 @@
+import { CssBaseline, ThemeProvider } from '@mui/material';
 import Home from './components/pages/Home/Home';
+import { makeTheme } from './theme';
 
-export default Home;
+const theme = makeTheme({ dark: false });
+
+export default function App() {
+    return (
+        <ThemeProvider theme={theme}>
+            <CssBaseline />
+            <Home />
+        </ThemeProvider>
+    )
+};

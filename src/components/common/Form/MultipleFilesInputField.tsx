@@ -37,7 +37,11 @@ const MultipleFilesInputField = (props: MultipleFilesInputFieldProps) => {
 	const extensions = useMemo(() => (authorizedExtensions ?? defaultExtensions).map(ext => "." + ext).join(","), [authorizedExtensions]);
 
 	return (
-		<div {...getRootProps()} style={{ display: "inline", float: "left", ...props.style }}>
+		<div {...getRootProps()} style={{
+			display: "inline", 
+			float: "left", 
+			...props.style
+		}}>
 			<input {...getInputProps()} accept={extensions} id="raised-button-file" hidden={true} />
 			<label htmlFor="raised-button-file" style={{ ...props.labelStyle }}>
 				{isDragActive ? (

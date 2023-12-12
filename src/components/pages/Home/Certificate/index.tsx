@@ -6,13 +6,16 @@ import { sortBy } from '../../../../utils/utils';
 import Extensions from './extensions';
 import Exporter from './exporter';
 import { CertificateElement } from '../Home';
+import Spacer from '../../../common/Spacer/Spacer';
 
 
 type Props = {
     certifcate: CertificateElement,
 }
 
-export function ShowRaw({ data }: { data: any }) {
+type Obj = Record<string, unknown>;
+
+export function ShowRaw({ data }: Readonly<{ data: Obj | Obj[] }>) {
     const [show, setShow] = useState(false);
 
     return (
@@ -27,7 +30,7 @@ export function ShowRaw({ data }: { data: any }) {
     )
 }
 
-function Issuer({ certificate: { issuer } }: { certificate: pki.Certificate }) {
+function Issuer({ certificate: { issuer } }: Readonly<{ certificate: pki.Certificate }>) {
 
     const sorted = useMemo(() =>
         sortBy(issuer.attributes, e => e.shortName),
@@ -38,7 +41,7 @@ function Issuer({ certificate: { issuer } }: { certificate: pki.Certificate }) {
             <CardHeader title={`hash: ${issuer.hash}`} />
             <CardContent>
                 {sorted.map(i => (
-                    <Tooltip title={`type: ${i.type} | name: ${i.name}`}>
+                    <Tooltip key={i.type} title={`type: ${i.type} | name: ${i.name}`}>
                         <div>
                             <span><b>{i.shortName || i.name}</b>: {i.value}</span>
                             <br />
@@ -53,7 +56,7 @@ function Issuer({ certificate: { issuer } }: { certificate: pki.Certificate }) {
     )
 }
 
-function Subject({ certificate: { subject } }: { certificate: pki.Certificate }) {
+function Subject({ certificate: { subject } }: Readonly<{ certificate: pki.Certificate }>) {
 
     const sorted = useMemo(() =>
         sortBy(subject.attributes, e => e.shortName),
@@ -64,7 +67,7 @@ function Subject({ certificate: { subject } }: { certificate: pki.Certificate })
             <CardHeader title={`hash: ${subject.hash}`} />
             <CardContent>
                 {sorted.map(i => (
-                    <Tooltip title={`type: ${i.type} | name: ${i.name}`}>
+                    <Tooltip key={i.type} title={`type: ${i.type} | name: ${i.name}`}>
                         <div>
                             <span><b>{i.shortName || i.name}</b>: {i.value}</span>
                             <br />
@@ -95,14 +98,18 @@ export default function Certificate(props: Props) {
                 </h2>
                 <Exporter certificate={certifcate.certificate} />
             </div>
+            <Spacer direction="vertical" size="1em" />
             <h3>
                 Issuer
             </h3>
             <Issuer certificate={certifcate.certificate} />
+            <Spacer direction="vertical" size="1em" />
             <h3>
                 Subject
             </h3>
             <Subject certificate={certifcate.certificate} />
+            <Spacer direction="vertical" size="1em" />
+
             <h3>
                 Extensions
             </h3>
