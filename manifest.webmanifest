@@ -1,1 +1,1 @@
-{"name":"view-cert","short_name":"view-cert","start_url":"./","display":"standalone","background_color":"#ffffff","lang":"en","scope":"./"}
+{"name":"View cert","short_name":"view-cert","start_url":"./","display":"standalone","background_color":"#ffffff","lang":"en","scope":"./","theme_color":"#ffffff","icons":[{"src":"./logo192.png","sizes":"192x192","type":"image/png"}]}
