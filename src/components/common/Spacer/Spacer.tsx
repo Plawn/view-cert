@@ -3,7 +3,7 @@ type Props = {
     size: string | number;
 }
 
-export default function Spacer(props: Props) {
+export default function Spacer(props: Readonly<Props>) {
     const { direction, size } = props;
     if (direction === "vertical") {
         return (

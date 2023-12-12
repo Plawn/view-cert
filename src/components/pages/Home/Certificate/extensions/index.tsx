@@ -39,7 +39,7 @@ type Extension =
     SubjectAltNames
     ;
 
-function AuthorityKeyIdentifier({ data }: { data: AuthorityKeyIdentifier }) {
+function AuthorityKeyIdentifier({ data }: Readonly<{ data: AuthorityKeyIdentifier }>) {
     return (
         <Item title="AuthorityKeyIdentifier" data={data}>
             value: <ByteArray value={data.value} />
@@ -47,7 +47,7 @@ function AuthorityKeyIdentifier({ data }: { data: AuthorityKeyIdentifier }) {
     );
 }
 
-function SubjectKeyIdentifier({ data }: { data: SubjectKeyIdentifier }) {
+function SubjectKeyIdentifier({ data }: Readonly<{ data: SubjectKeyIdentifier }>) {
     return (
         <Item title="SubjectKeyIdentifier" data={data}>
             <Typography>
@@ -60,7 +60,7 @@ function SubjectKeyIdentifier({ data }: { data: SubjectKeyIdentifier }) {
     );
 }
 
-function SubjectAltNames({ data }: { data: SubjectAltNames }) {
+function SubjectAltNames({ data }: Readonly<{ data: SubjectAltNames }>) {
     return (
         <Item title="SubjectAltNames" data={data}>
             <Typography>
@@ -73,7 +73,7 @@ function SubjectAltNames({ data }: { data: SubjectAltNames }) {
     );
 }
 
-export default function Extensions({ extensions }: { extensions: Extension[] }) {
+export default function Extensions({ extensions }: Readonly<{ extensions: Extension[] }>) {
 
     return (
         <div>

@@ -43,7 +43,7 @@ function Issuer({ certificate: { issuer } }: Readonly<{ certificate: pki.Certifi
                 {sorted.map(i => (
                     <Tooltip key={i.type} title={`type: ${i.type} | name: ${i.name}`}>
                         <div>
-                            <span><b>{i.shortName || i.name}</b>: {i.value}</span>
+                            <span><b>{i.shortName ?? i.name}</b>: {i.value}</span>
                             <br />
                         </div>
                     </Tooltip>
@@ -69,7 +69,7 @@ function Subject({ certificate: { subject } }: Readonly<{ certificate: pki.Certi
                 {sorted.map(i => (
                     <Tooltip key={i.type} title={`type: ${i.type} | name: ${i.name}`}>
                         <div>
-                            <span><b>{i.shortName || i.name}</b>: {i.value}</span>
+                            <span><b>{i.shortName ?? i.name}</b>: {i.value}</span>
                             <br />
                         </div>
                     </Tooltip>
@@ -83,7 +83,7 @@ function Subject({ certificate: { subject } }: Readonly<{ certificate: pki.Certi
 }
 
 
-export default function Certificate(props: Props) {
+export default function Certificate(props: Readonly<Props>) {
     const { certifcate } = props;
     return (
         <>
@@ -120,7 +120,7 @@ export default function Certificate(props: Props) {
 }
 
 
-export function PrivateKey(props: { privateKey: pki.PrivateKey }) {
+export function PrivateKey(props: Readonly<{ privateKey: pki.PrivateKey }>) {
     const { privateKey } = props;
 
     return (
